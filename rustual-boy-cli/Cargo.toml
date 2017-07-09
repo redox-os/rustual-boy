@@ -20,10 +20,13 @@ log-core-all = ["rustual-boy-core/log-all"]
 
 [dependencies]
 encoding = "0.2"
-minifb = "0.9.0"
+minifb = { git = "https://github.com/emoon/rust_minifb.git" }
 cpal = "0.4.4"
 futures = "0.1.1"
 rustual-boy-middleware = { path = "../rustual-boy-middleware" }
 rustual-boy-core = { path = "../rustual-boy-core" }
 clap = "2.0.0"
 combine = "2.2.0"
+
+[replace]
+"atty:0.2.2" = { git = "https://github.com/ids1024/atty.git", branch = "redox" }
