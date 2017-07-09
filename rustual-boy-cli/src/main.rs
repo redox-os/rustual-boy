@@ -23,11 +23,13 @@ mod cpal_driver;
 mod emulator;
 mod system_time_source;
 mod wave_file_buffer_sink;
+mod null_audio_sink;
 
 use rustual_boy_core::rom::*;
 use rustual_boy_core::sram::*;
 use rustual_boy_core::vsu::*;
-use cpal_driver::*;
+use null_audio_sink::*;
+use system_time_source::*;
 use emulator::*;
 
 fn main() {
@@ -64,10 +66,8 @@ fn main() {
         }
     };
 
-    let audio_driver = CpalDriver::new(SAMPLE_RATE as _, 100).unwrap();
-
-    let audio_buffer_sink = audio_driver.sink();
-    let time_source = audio_driver.time_source();
+    let audio_buffer_sink = Box::new(NullAudioSink { });
+    let time_source = Box::new(SystemTimeSource::new());
 
     let mut emulator = Emulator::new(rom, sram, audio_buffer_sink, time_source);
     emulator.run();
