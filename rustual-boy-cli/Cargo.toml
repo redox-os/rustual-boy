@@ -20,12 +20,12 @@ log-core-all = ["rustual-boy-core/log-all"]
 
 [dependencies]
 encoding = "0.2"
-minifb = { git = "https://github.com/emoon/rust_minifb.git" }
+minifb = "0.10"
 cpal = "0.4.4"
 futures = "0.1.1"
 rustual-boy-middleware = { path = "../rustual-boy-middleware" }
 rustual-boy-core = { path = "../rustual-boy-core" }
-clap = "2.0.0"
+clap = "2.26.0"
 combine = "2.2.0"
 
 [replace]
